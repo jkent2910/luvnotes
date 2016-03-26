@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'byebug'
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'spring'
   gem 'rspec-rails', '~> 3.2.1'
   gem 'cucumber-rails', '~> 1.4.2', :require => false 
@@ -23,5 +24,9 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', group: :development
+  gem 'web-console'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.0.0', require: false
 end
