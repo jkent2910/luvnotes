@@ -16,10 +16,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'byebug'
   gem 'capybara'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails', '~> 3.2.1'
   gem 'cucumber-rails', '~> 1.4.2', :require => false 
   gem 'factory_girl_rails', '~> 4.5.0'
 end
 
+group :development do
+  gem 'web-console', group: :development
+end
