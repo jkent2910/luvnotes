@@ -29,4 +29,5 @@ end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0.0', require: false
+  gem 'launchy', '~> 2.4', '>= 2.4.3'
 end

@@ -14,6 +14,12 @@ module NavigationHelpers
       when /the sign up page/
         new_user_registration_path
 
+      when /sign in page/
+        new_user_session_path
+
+      when /the create new profile page/
+        new_profile_path
+
       # Add more mappings here.
       # Here is an example that pulls values out of the Regexp:
       #
