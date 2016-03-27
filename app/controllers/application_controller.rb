@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if current_user.sign_in_count == 1
       new_profile_path
+    elsif current_user.admin?
+      admin_path
     else
       dashboard_path
     end

@@ -1,0 +1,8 @@
+Hi, <%= @luver %>!
+
+<%= @user %> has added you as their Luver on LuvNotes.  To confirm, please click the link below.
+
+<%= link_to "Confirm Luver", new_user_session_url(:token => @token, :user_id => User.find_by(email: @user), :luver_id => User.find_by(email: @luver)) %>
+
+Thanks,
+LuvNotes team

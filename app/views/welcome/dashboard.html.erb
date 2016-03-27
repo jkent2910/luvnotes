@@ -1,1 +1,20 @@
 <h1>Dashboard</h1>
+
+<% if @user.luver_id.nil? %>
+<%= link_to "Invite Luver", invite_path(:send_invite, user_id: @user.id, profile_id: @profile.id) %>
+    Luver already signed up?
+    <%= search_form_for @q, url: dashboard_url do |f| %>
+        <%= f.label :find_by_email %>
+        <%= f.search_field :first_name_or_user_email_cont %>
+        <%= f.submit %>
+        <% end %>
+    <% if !@results.empty? %>
+    <% @results.each do |result| %>
+        <%= result.first_name %>
+        <%= result.last_name %>
+        <%= link_to "Add Luver", send_confirm_path(user_id: @user.id, luver_id: result.id) %>
+        <% end %>
+    <% end %>
+    <% else %>
+    Your luver is <%= User.find(@user.luver_id).email %>
+<% end %>

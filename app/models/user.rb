@@ -4,5 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_create :generate_token
+
   has_one :profile
+
+  private
+
+  def generate_token
+    begin
+      self.token = SecureRandom.hex.to_s
+    end while self.class.exists?(token: token)
+  end
 end

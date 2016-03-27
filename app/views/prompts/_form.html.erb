@@ -1,0 +1,19 @@
+<div class="container">
+  <%= form_for(@prompt) do |f| %>
+      <% if @prompt.errors.any? %>
+          <h5><%= pluralize(@prompt.errors.count, "error") %> prohibited this prompt from being saved:</h5>
+          <ul>
+            <% @prompt.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+      <% end %>
+      <div class="field">
+        <%= f.label :prompt_question %><br>
+        <%= f.text_area :prompt_question %>
+      </div>
+      <div class="actions">
+        <%= f.submit class: 'btn btn-md btn-primary' %>
+      </div>
+  <% end %>
+</div>

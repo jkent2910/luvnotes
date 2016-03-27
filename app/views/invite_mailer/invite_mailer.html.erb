@@ -1,0 +1,8 @@
+Hi, <%= @first_name %>!
+
+<%= @user %> has invited you to join LuvNotes.  Click the link below to get started!
+
+<%= link_to "Sign up", new_user_registration_url(:token => @token) %>
+
+Thanks,
+LuvNotes team

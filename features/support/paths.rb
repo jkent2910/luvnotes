@@ -20,6 +20,15 @@ module NavigationHelpers
       when /the create new profile page/
         new_profile_path
 
+      when /admin dashboard page/
+        admin_path
+
+      when /new prompt page/
+        new_prompt_path
+
+      when /send invitation page/
+        invite_path(:send_invite)
+
       # Add more mappings here.
       # Here is an example that pulls values out of the Regexp:
       #
