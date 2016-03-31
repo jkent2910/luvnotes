@@ -38,9 +38,13 @@ class WelcomeController < ApplicationController
     email = params[:email]
     token = params[:token]
 
-    InviteMailer.invite_mailer(user, first_name, email, token).deliver_now
-    redirect_to dashboard_path, notice: "Your invitation has been sent!"
-
+    if user == email
+      redirect_to dashboard_path, notice: "You can't add yourself"
+    else
+      InviteMailer.invite_mailer(user, first_name, email, token).deliver_now
+      redirect_to dashboard_path, notice: "Your invitation has been sent!"
+    end
+    
   end
 
   private

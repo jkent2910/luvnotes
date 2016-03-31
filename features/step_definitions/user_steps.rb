@@ -32,3 +32,12 @@ Given(/^my luver has signed up but not added me$/) do
   @new_user = FactoryGirl.create(:user, email: "troy@gmail.com")
   @new_user_profile = FactoryGirl.create(:profile, first_name: "Troy", last_name: "Renken", user_id: @new_user.id)
 end
+
+Given(/^I a user with email "([^"]*)"$/) do |email|
+  @user = FactoryGirl.create(:user, email: email)
+  @profile = FactoryGirl.create(:profile, user_id: @user.id)
+end
+
+Then(/^I try to add myself as a luver$/) do
+
+end

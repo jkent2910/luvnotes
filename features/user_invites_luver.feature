@@ -33,3 +33,14 @@ Feature: User wants to invite their luver to use LuvNotes
     When I follow "Add Luver"
     Then I should see "We've sent a confirmation"
 
+  Scenario: User cannot add his/herself as luver
+    Given I a user with email "troy@gmail.com"
+    And I sign in
+    And I am on the dashboard page
+    And I follow "Invite Luver"
+    Then I should be on the send invitation page
+    And I fill in "First name" with "Troy"
+    And I fill in "Email" with "troy@gmail.com"
+    And I press "Send"
+    Then I should see "You can't add yourself"
+
