@@ -2,6 +2,10 @@ class PromptsController < ApplicationController
   before_action :set_prompt, only: [:show, :edit, :update, :destroy]
   before_action :ensure_admin, only: [:new, :create, :edit, :update, :destroy]
 
+  def index
+    @prompts = Prompt.all
+  end
+
   def show
   end
 

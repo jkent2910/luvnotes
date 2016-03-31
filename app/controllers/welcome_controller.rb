@@ -44,7 +44,7 @@ class WelcomeController < ApplicationController
       InviteMailer.invite_mailer(user, first_name, email, token).deliver_now
       redirect_to dashboard_path, notice: "Your invitation has been sent!"
     end
-    
+
   end
 
   private
