@@ -5,7 +5,7 @@ class ConfirmMailer < ActionMailer::Base
     @user = user
     @token = token
     @luver = luver
-    to_emails = @email
+    to_emails = @user
 
     mail(:to => to_emails,
          :subject => "#{user} has added you as a luver on LuvNotes")
