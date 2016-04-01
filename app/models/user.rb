@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
+  has_many :prompts, :through => :prompt_responses
+
+
   private
 
   def generate_token

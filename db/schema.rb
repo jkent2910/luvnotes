@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327175216) do
+ActiveRecord::Schema.define(version: 20160401154233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,19 @@ ActiveRecord::Schema.define(version: 20160327175216) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
   end
+
+  create_table "prompt_responses", force: :cascade do |t|
+    t.integer  "prompt_id"
+    t.integer  "user_id"
+    t.datetime "send_date"
+    t.text     "response"
+    t.integer  "luver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "prompt_responses", ["prompt_id"], name: "index_prompt_responses_on_prompt_id", using: :btree
+  add_index "prompt_responses", ["user_id"], name: "index_prompt_responses_on_user_id", using: :btree
 
   create_table "prompts", force: :cascade do |t|
     t.text     "prompt_question"

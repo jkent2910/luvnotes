@@ -1,0 +1,13 @@
+<div class="container">
+  <%= form_for [@prompt, @prompt_response], url: prompt_prompt_responses_path do |f| %>
+      <%= f.hidden_field(:user_id, :value => current_user) %>
+      <h4>Prompt: <%= Prompt.find(params[:prompt_id]).prompt_question %></h4>
+      <div class="field">
+        <%= f.label :response %><br>
+        <%= f.text_area :response %>
+      </div>
+      <div class="actions">
+        <%= f.submit class: 'btn btn-md btn-primary' %>
+      </div>
+  <% end %>
+</div>

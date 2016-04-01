@@ -10,6 +10,20 @@ class WelcomeController < ApplicationController
       @q = Profile.joins(:user).ransack(params[:q])
     end
     @results = @q.result
+
+    all_prompts = []
+
+    PromptResponse.find_each do |response|
+      if response.user_id == current_user.id
+        prompt_to_remove = Prompt.find(response.prompt_id)
+        all_prompts << prompt_to_remove
+      end
+    end
+
+    prompts = Arel::Table.new(:prompts)
+
+    @prompts = Prompt.where(prompts[:id].not_in all_prompts)
+
   end
 
   def admin

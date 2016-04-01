@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :profiles
-  resources :prompts
+  resources :prompts do
+    resources :prompt_responses
+  end
 
 end
