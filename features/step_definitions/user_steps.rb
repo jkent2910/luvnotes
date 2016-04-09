@@ -28,6 +28,17 @@ Given(/^my luver has signed up$/) do
   @user.save
 end
 
+
+Given(/^my luver signs in$/) do
+  @luver = User.find_by(email: "troyrenken@gmail.com")
+  visit new_user_session_path
+  step "I am on sign in page"
+  step "I should see \"Sign in\""
+  step "I fill in \"Email\" with \"troyrenken@gmail.com\""
+  step "I fill in \"Password\" with \"password\""
+  step "I press \"Log in\""
+end
+
 Given(/^my luver has signed up but not added me$/) do
   @new_user = FactoryGirl.create(:user, email: "troy@gmail.com")
   @new_user_profile = FactoryGirl.create(:profile, first_name: "Troy", last_name: "Renken", user_id: @new_user.id)

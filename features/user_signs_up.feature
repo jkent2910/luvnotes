@@ -12,6 +12,7 @@ Feature: Person signs up for Luv Notes
 
   Scenario: Already registered user should not be directed to the new profile page
     Given I am an existing user
+    And I have a profile
     And I am not signed in
     And I sign in
     Then I should be on the dashboard page

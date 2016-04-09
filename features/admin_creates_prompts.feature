@@ -13,6 +13,7 @@ Feature: Admin can create prompts
 
   Scenario: User cannot create prompt
     Given I am an existing user
+    And I have a profile
     And I sign in
     And I am on the dashboard page
     And I try to visit the new prompt page
