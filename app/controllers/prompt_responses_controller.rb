@@ -16,6 +16,7 @@ class PromptResponsesController < ApplicationController
         @prompt_response.prompt_id = params[:prompt_id]
         @prompt_response.send_date = generate_random_time()
         @prompt_response.save
+        byebug
 
         user = User.find(user)
         luver = User.find(luver)

@@ -1,3 +1,83 @@
-<div class="container">
-  <%= link_to "Join Luv Notes", new_user_registration_path, :class => 'btn btn-primary' %>
+<div class="homepage-hero-module">
+  <div class="video-container">
+    <div class="filter"></div>
+    <div class="header div welcome-header">
+      <div class="row">
+        <div class="col-md-12 col-xs-11 text-center">
+          <h1>The flame doesn't have to go out</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <%= link_to "JOIN FOR FREE", new_user_registration_path, class: 'btn btn-default join-btn' %>
+          <h4><a href="#learn" style="color: white;">Learn more</a></h4>
+        </div>
+      </div>
+    </div>
+    <video autoplay loop class="fillWidth">
+      <source src="/assets/Open-Fire.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+      <source src="/assets/Open-Fire.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+    </video>
+    <div class="poster hidden">
+      <%= image_tag('Open-Fire.jpg') %>
+    </div>
+  </div>
+</div>
+<div class="container main-site">
+  <div class="row">
+    <div class="col-md-4 hidden-xs text-center">
+      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+    </div>
+    <div class="col-md-4 hidden-xs text-center">
+      <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
+    </div>
+    <div class="col-md-4 hidden-xs text-center">
+      <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col-xs-12 hidden-md hidden-lg text-center">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+      </div>
+      <h3 class="text-center"><a name="learn" style="color: black">Respond to Prompts</a></h3>
+      <p class="text-center welcome-text">Answer questions such as.. <br />"What's your favorite date we've been on?"<br />"Describe your memory of when we first met?" <br />
+      "What about me are you most attracted to?" </p>
+    </div>
+    <div class="col-md-4">
+      <div class="col-xs-12 hidden-md hidden-lg text-center">
+        <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
+      </div>
+      <h3 class="text-center">Time Machine</h3>
+      <p class="text-center welcome-text">Each time you respond to a prompt, a random date & time in the future
+        will be saved.  Neither you or your luver will know when your prompt responses will be delivered!</p>
+    </div>
+    <div class="col-md-4">
+      <div class="col-xs-12 hidden-md hidden-lg text-center">
+        <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+      </div>
+      <h3 class="text-center">Surprise Gift</h3>
+      <p class="text-center welcome-text">Your luver will receive an e-mail with a link in it to view your prompt response when the random
+      date/time that was originally saved occurs.  It'll be a fun surprise for both of you!</p>
+    </div>
+  </div>
+  <div class="row contact-social-div">
+    <div class="col-md-6 text-center">
+      <h3>Send Us Luv</h3><br />
+      <%= image_tag("envelope.jpg") %>
+    </div>
+    <div class="col-md-6 text-center">
+      <h3>Be Social with Us</h3>
+      <%= icon('twitter', class: 'fa-social-icons') %>
+      <%= icon('facebook', class: 'fa-social-icons') %>
+      <%= icon('instagram', class: 'fa-social-icons') %>
+    </div>
+  </div>
+</div>
+<div class="container container-footer">
+  <div class="row footer">
+    <div class="col-md-12">
+      Copyright Luv Notes 2016
+    </div>
+  </div>
 </div>

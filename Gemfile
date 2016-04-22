@@ -13,6 +13,7 @@ gem 'turbolinks'
 gem 'ransack'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'font-awesome-sass'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 

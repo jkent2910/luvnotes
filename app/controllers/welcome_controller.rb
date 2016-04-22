@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   before_action :find_profile, only: [:dashboard, :send_invite]
+
   def index
   end
 

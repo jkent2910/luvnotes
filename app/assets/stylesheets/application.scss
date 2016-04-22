@@ -13,3 +13,11 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "welcome";
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+* {
+  font-family: 'Raleway', sans-serif;
+}

@@ -27,5 +27,8 @@ module Luvnotes
 
     config.active_job.queue_adapter = :delayed_job
 
+    config.assets.enabled = true
+
+
   end
 end
