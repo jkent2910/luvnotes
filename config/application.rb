@@ -29,6 +29,9 @@ module Luvnotes
 
     config.assets.enabled = true
 
+    config.action_mailer.delivery_method = :postmark
+    config.action_mailer.postmark_settings = { :api_token => "ea0f2164-7e43-42b6-99d7-8d27bda8be8d" }
+
 
   end
 end
