@@ -1,5 +1,5 @@
 class ConfirmMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "julie@entretechno.com"
 
   def confirm_mailer(token, luver, user)
     @user = user

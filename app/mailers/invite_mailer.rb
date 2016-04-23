@@ -1,5 +1,5 @@
 class InviteMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "julie@entretechno.com"
 
   def invite_mailer(user, first_name, email, token)
     @user = user
