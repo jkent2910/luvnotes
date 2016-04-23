@@ -79,4 +79,6 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = :delayed_job
 
+  config.action_mailer.default_url_options = { :host => 'luvnotes.heroku.com' }
+
 end
