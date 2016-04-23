@@ -47,7 +47,7 @@ class PromptResponsesController < ApplicationController
 
   def generate_random_time
     date1 = DateTime.now
-    date2 = DateTime.new(2016,6,1)
+    date2 = DateTime.new(2016,4,25)
 
     time = Time.at((date2.to_time.to_f - date1.to_time.to_f)*rand + date1.to_time.to_f)
     return time
