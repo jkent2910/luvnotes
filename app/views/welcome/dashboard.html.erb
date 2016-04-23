@@ -1,30 +1,72 @@
-<div class="container">
-  <h1>Dashboard</h1>
+<% if @user.luver_id.nil? %>
+<div class="container no-luver">
+  <div class="row">
+    <div class="col-md-12 centered-text">
+      <h2>You don't have a luver yet</h2>
+      <%= image_tag("frown.jpg", class: 'centered-text') %><br />
+      <%= link_to "INVITE", invite_path(:send_invite, user_id: @user.id, profile_id: @profile.id), class: "btn invite-btn" %> <h3>OR</h3>
+      <div class="btn btn-search" id="search-btn">SEARCH</div>
+          <div id="search-div" class="hidden">
+            <%= search_form_for @q, url: dashboard_url do |f| %>
+                <%= f.label :find_by_email %>
+                <%= f.search_field :first_name_or_user_email_cont %>
+                <%= f.submit :class => 'btn btn-default' %>
+            <% end %>
+            <div class="results">
+              <% if !@results.empty? %>
+                  <% @results.each do |result| %>
+                      <p class="search-results"><%= result.first_name %>
+                      <%= result.last_name %></p>
+                      <%= link_to "Add Luver", send_confirm_path(user_id: @user.id, luver_id: result.id) %>
+                  <% end %>
+              <% else %>
+              <p>Sorry, we couldn't find anyone with that e-mail address</p>
+              <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
+<div class="container luver-div">
+  <div clas="row">
+    <div class="col-md-3 centered-text">
+      <%= image_tag("twohearts.jpg") %>
+      <h3>Your luver is <%= User.find(@user.luver_id).email %></h3>
+      <h4>Created <%= @response_count %> Luv Notes</h4>
+      <h4>Received <%= @received_count %> Luv Notes </h4>
 
-  <% if @user.luver_id.nil? %>
-  <%= link_to "Invite Luver", invite_path(:send_invite, user_id: @user.id, profile_id: @profile.id) %>
-      Luver already signed up?
-      <%= search_form_for @q, url: dashboard_url do |f| %>
-          <%= f.label :find_by_email %>
-          <%= f.search_field :first_name_or_user_email_cont %>
-          <%= f.submit %>
+      <% if @luv_notes_ready.any? %>
+      <h3>You have <%= @luv_notes_ready.count %> Luv Note(s)!</h3>
+          <% @luv_notes_ready.each do |note| %>
+            <%= link_to "View Note!", prompt_prompt_response_path(note.prompt_id, note), class: 'btn btn-primary'  %>
           <% end %>
-      <% if !@results.empty? %>
-      <% @results.each do |result| %>
-          <%= result.first_name %>
-          <%= result.last_name %>
-          <%= link_to "Add Luver", send_confirm_path(user_id: @user.id, luver_id: result.id) %>
-          <% end %>
-      <% end %>
       <% else %>
-      Your luver is <%= User.find(@user.luver_id).email %>
-  <% end %>
+      <div class="extra-margin-top">
+        <h3>No Luv Notes right now</h3>
+        <%= image_tag("frown.jpg") %>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-md-offset-1 col-md-8">
+      <h2>Send a Luv Note</h2>
+        <% @prompts.each do |prompt| %><br /><br />
+          <div class="well">
+            <h4><%= prompt.prompt_question %></h4>
+            <%= link_to "Answer prompt", new_prompt_prompt_response_path(prompt), class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+    </div>
+  </div>
 </div>
+<% end %>
 
-<div class="container">
-  <h2>Start Writing Prompts</h2>
-  <% @prompts.each do |prompt| %><br /><br />
-  <%= prompt.prompt_question %><br />
-      <%= link_to "Answer prompt", new_prompt_prompt_response_path(prompt), class: 'btn btn-primary' %>
-  <% end %>
-</div>
+<script>
+  $("#search-btn").click(function() {
+    if ($("#search-div").hasClass("hidden")) {
+      $("#search-div").removeClass("hidden");
+    } else {
+      $("#search-div").addClass("hidden");
+    }
+  });
+</script>

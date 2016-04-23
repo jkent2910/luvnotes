@@ -1,10 +1,10 @@
-<div class="container">
+<div class="border-form-div">
   <%= form_tag(send_invite_path) do %>
       <%= hidden_field_tag 'user', params[:user_id] %>
       <%= hidden_field_tag 'token', @token %>
-      <%= label_tag 'first name', 'First name' %>
-      <%= text_field_tag 'first_name', nil %>
-      <%= label_tag 'email', 'Email' %>
+      <%= label_tag 'first name', 'First Name' %>
+      <%= text_field_tag 'first_name', nil %><br />
+      <%= label_tag 'email', 'Email' %><br />
       <%= text_field_tag 'email', nil %>
       <%= submit_tag "Send invite", class: 'btn btn-primary' %>
   <% end %>

@@ -33,6 +33,10 @@ class PromptResponsesController < ApplicationController
 
   def show
     @prompt_response = PromptResponse.find(params[:id])
+
+    @prompt = Prompt.find(params[:prompt_id])
+
+    @luver = Profile.find_by(user_id: @prompt_response.user_id).full_name
   end
 
   private

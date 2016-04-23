@@ -16,6 +16,11 @@ Given(/^I do not have a luver in the system$/) do
   @user.luver_id = nil
 end
 
+Given(/^"([^"]*)" does not have a luver in the system$/) do |user|
+  @user = User.find_by(email: user)
+  @user.luver_id = nil
+end
+
 Given(/^I have invited my luver$/) do
   @new_user = FactoryGirl.create(:user, luver_id: @user.id)
   @user.luver_id = @new_user.id
@@ -41,12 +46,25 @@ end
 
 Given(/^my luver has signed up but not added me$/) do
   @new_user = FactoryGirl.create(:user, email: "troy@gmail.com")
+  p @new_user
   @new_user_profile = FactoryGirl.create(:profile, first_name: "Troy", last_name: "Renken", user_id: @new_user.id)
 end
 
-Given(/^I a user with email "([^"]*)"$/) do |email|
+Given(/^I am a user with email "([^"]*)"$/) do |email|
   @user = FactoryGirl.create(:user, email: email)
   @profile = FactoryGirl.create(:profile, user_id: @user.id)
+end
+
+Given(/^there is a user with email "([^"]*)"$/) do |email|
+  @user = FactoryGirl.create(:user, email: email)
+  @profile = FactoryGirl.create(:profile, user_id: @user.id)
+end
+
+Given(/^"([^"]*)" has a luver with email "([^"]*)"$/) do |user, email|
+  @test_user = User.find_by(email: user)
+  @second_user = FactoryGirl.create(:user, email: email, password: "password", password_confirmation: "password", luver_id: @test_user.id)
+  @test_user.update_attributes(luver_id: @second_user.id)
+  @test_user.save
 end
 
 Then(/^I try to add myself as a luver$/) do

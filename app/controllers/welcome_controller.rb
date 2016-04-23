@@ -1,6 +1,8 @@
 class WelcomeController < ApplicationController
   before_action :find_profile, only: [:dashboard, :send_invite]
 
+  before_action :check_luver_status, only: [:send_confirm_email]
+
   def index
   end
 
@@ -11,6 +13,15 @@ class WelcomeController < ApplicationController
       @q = Profile.joins(:user).ransack(params[:q])
     end
     @results = @q.result
+
+    @response_count = PromptResponse.where(user_id: current_user.id).count
+
+    @received_count = PromptResponse.where("luver_id = ? AND send_date <= ?", current_user.id, Date.today()).count
+
+    @luv_notes_ready = []
+    PromptResponse.where("luver_id = ? AND send_date <= ? AND send_date >= ?", current_user.id, Date.today(), Date.today - 7).each do |response|
+      @luv_notes_ready << response
+    end
 
     all_prompts = []
 
@@ -67,5 +78,15 @@ class WelcomeController < ApplicationController
   def find_profile
     @user = current_user
     @profile = Profile.find_by(user_id: @user.id)
+  end
+
+  def check_luver_status
+    params[:luver_id].to_i
+    luver_profile = Profile.find(params[:luver_id]).user_id
+    luver = User.find(luver_profile)
+    p luver
+    if luver.luver_id != nil
+      redirect_to dashboard_path, notice: "This person already has a luver"
+    end
   end
 end
