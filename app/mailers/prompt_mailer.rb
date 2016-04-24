@@ -5,7 +5,7 @@ class PromptMailer < ApplicationMailer
     @luver = luver
     @email = email
 
-    mail(from: 'julie@entretechno.com',
+    mail(from: 'julie@luvnotes.co',
           to: @email,
           subject: 'You have a Luv Note waiting!')
   end
