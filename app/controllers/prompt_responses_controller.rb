@@ -20,7 +20,7 @@ class PromptResponsesController < ApplicationController
         user = User.find(user).email
         luver = User.find(luver).email
         email = luver.email
-        prompt_response_date = @prompt_response.send_date.as_json
+        prompt_response_date = @prompt_response.send_date
 
         PromptMailer.prompt_mailer(user, luver, email).deliver_later(wait_until: prompt_response_date)
 
