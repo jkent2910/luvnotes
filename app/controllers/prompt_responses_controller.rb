@@ -22,7 +22,7 @@ class PromptResponsesController < ApplicationController
         email = luver.email
         prompt_response_date = @prompt_response.send_date.as_json
 
-        PromptMailer.delay(run_at: prompt_response_date).prompt_mailer(user, luver, email).deliver_later(wait_until: prompt_response_date)
+        PromptMailer.prompt_mailer(user, luver, email).deliver_later(wait_until: prompt_response_date)
 
         redirect_to dashboard_path, notice: "Response saved."
       else
