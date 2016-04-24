@@ -17,8 +17,8 @@ class PromptResponsesController < ApplicationController
         @prompt_response.send_date = generate_random_time()
         @prompt_response.save
 
-        user = User.find(user)
-        luver = User.find(luver)
+        user = User.find(user).email
+        luver = User.find(luver).email
         email = luver.email
         prompt_response_date = @prompt_response.send_date.as_json
 
