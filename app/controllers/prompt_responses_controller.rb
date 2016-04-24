@@ -16,13 +16,13 @@ class PromptResponsesController < ApplicationController
         @prompt_response.prompt_id = params[:prompt_id]
         @prompt_response.send_date = generate_random_time()
         @prompt_response.save
-        
+
         user = User.find(user)
         luver = User.find(luver)
         email = luver.email
         prompt_response_date = @prompt_response.send_date.as_json
 
-        PromptMailer.prompt_mailer(user, luver, email).deliver_later(wait_until: prompt_response_date)
+        PromptMailer.delay(run_at: prompt_response_date).prompt_mailer(user, luver, email).deliver_later(wait_until: prompt_response_date)
 
         redirect_to dashboard_path, notice: "Response saved."
       else
@@ -46,7 +46,7 @@ class PromptResponsesController < ApplicationController
 
   def generate_random_time
     date1 = DateTime.now
-    date2 = DateTime.new(2016,4,25)
+    date2 = DateTime.new(2016,4,24)
 
     time = Time.at((date2.to_time.to_f - date1.to_time.to_f)*rand + date1.to_time.to_f)
     return time
