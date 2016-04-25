@@ -39,7 +39,7 @@
       <% if @luv_notes_ready.any? %>
       <h3>You have <%= @luv_notes_ready.count %> Luv Note(s)!</h3>
           <% @luv_notes_ready.each do |note| %><br />
-            <%= link_to "View Note!", prompt_prompt_response_path(note.prompt_id, note), class: 'btn btn-primary'  %>
+            <%= link_to "View Note!", prompt_prompt_response_path(note.prompt_id, note), class: 'btn btn-primary'  %><br />
           <% end %>
       <% else %>
       <div class="extra-margin-top">
