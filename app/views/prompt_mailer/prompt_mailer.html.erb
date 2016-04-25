@@ -1,8 +1,8 @@
-Hi, <%= @luver %>!
+Hi, <%= @luver.email %>!
 
-You have a Luv Note from <%= @user %> waiting for you!  Click the link to login & view your Luv Note!
+You have a Luv Note from <%= @user.email %> waiting for you!  Click the link to login & view your Luv Note! <br />
 
-<%= link_to "Sign in", new_user_session_url %>
+<%= link_to "Sign in now!", new_user_session_url %><br />
 
 Thanks,
 LuvNotes team
