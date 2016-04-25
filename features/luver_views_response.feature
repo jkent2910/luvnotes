@@ -17,4 +17,4 @@ Feature: Luver logs in to view response
     Given my luver signs in
     And the date/time is before the date/time saved when I answered the prompt
     Then my luver cannot view my prompt response to "What is the first thing you noticed about me?"
-    And I should see "Dashboard"
+    And I should see "No Luv Notes right now"

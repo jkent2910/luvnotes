@@ -39,14 +39,13 @@ Given(/^my luver signs in$/) do
   visit new_user_session_path
   step "I am on sign in page"
   step "I should see \"Sign in\""
-  step "I fill in \"Email\" with \"troyrenken@gmail.com\""
-  step "I fill in \"Password\" with \"password\""
-  step "I press \"Log in\""
+  step "I fill in \"user_email\" with \"troyrenken@gmail.com\""
+  step "I fill in \"user_password\" with \"password\""
+  step "I press \"Sign in\""
 end
 
 Given(/^my luver has signed up but not added me$/) do
   @new_user = FactoryGirl.create(:user, email: "troy@gmail.com")
-  p @new_user
   @new_user_profile = FactoryGirl.create(:profile, first_name: "Troy", last_name: "Renken", user_id: @new_user.id)
 end
 
